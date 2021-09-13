@@ -3,5 +3,6 @@ class Channel < ApplicationRecord
   belongs_to :team
   belongs_to :user
   validates :slug, :team, :user, presence: true
-  validates :slug, uniqueness: true, format: { with: /\A[a-zA-Z0-9]+\Z/ }
+  validates :slug, format: { with: /\A[a-zA-Z0-9]+\Z/ }
+  validates :slug, uniqueness: true, scope: :team_id
 end
